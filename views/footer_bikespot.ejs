@@ -1,0 +1,19 @@
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+crossorigin=""></script>
+<script src="js/map.js"></script>
+
+<script>
+    var redIcon = L.icon({
+        iconUrl: '/img/icoon.png',
+        iconSize:     [25.5, 38.5], // size of the icon
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    <% for(var i=0; i < bikespot.features.length; i++) { %>
+    L.marker([<%-bikespot.features[i].geometry.coordinates[1] %>, <%-bikespot.features[i].geometry.coordinates[0] %>], {icon: redIcon}).addTo(map)
+        .bindPopup("<span class='popup'> <%- bikespot.features[i].properties.Straat %></span> <br> <span class='popup'> Aantal Plaatsen: <%- bikespot.features[i].properties.Max_Fiets %> </span> <br> <span class='popupLink'> <a href='/info?bikespot=<%- bikespot.features[i].properties.OBJECTID %>'> Meer informatie</a> </span>")
+    <% } %>
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<% include header %>
+
+    <div class="logoBikespot">
+      <img src="/img/Logo_Bikespot.svg">
+    </div>
+
+    <p class="center">Loading...</p>
+
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+
+    <script>
+      var bar = document.getElementsByClassName('progress-bar')[0].classList;
+      setTimeout(function() { barStart(); }, 500);
+
+      function barStart(){
+        bar.add("bar5");
+        setTimeout(function() { bar25(); }, 500);
+      }
+
+      function bar25(){
+        bar.add("bar25");
+        setTimeout(function() { bar50(); }, 600);
+      }
+
+      function bar50(){
+        bar.add("bar50");
+        setTimeout(function() { bar75(); }, 400);
+      }
+
+      function bar75(){
+        bar.add("bar75");
+        setTimeout(function() { bar100(); }, 1000);
+      }
+
+      function bar100(){
+        bar.add("bar100");
+        setTimeout(function(){ loadBikespot(); }, 2000);
+      }
+
+      function loadBikespot(){
+        window.location.href="/bikespot";
+      }
+    </script>
+
+<% include endpage %>

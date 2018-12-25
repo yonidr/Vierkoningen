@@ -1,0 +1,26 @@
+<% include header %>
+
+  <% include navigation %>
+
+  <h1><%-title%></h1>
+
+  <p>Op deze pagina kan je meer informatie terugvinden met betrekking tot jouw dichtsbijzijnde fietsenstalling!</p> <br/>
+
+  <div class="lijn"></div>
+
+  <script>
+
+  <% for(var i=0; i < info.features.length; i++) {
+    if (info.features[i].id == spotID ) {
+      var naam = info.features[i].properties.NAAM;
+      if (naam == '' || naam == null) { naam = 'zonder naam' }
+      %>
+      document.write('<span class="titelGeel">Fietsenstalling </span><span class="titelGeel"> <%- naam %></span> <br/><br/> <span class="titelGeelKlein">Eigenaar:</span><span class=""> <%- info.features[i].properties.Eigenaar %></span> <br/> <span class="titelGeelKlein">Adres:</span><span class=""> <%- info.features[i].properties.Adres %></span> <br/><br/> <span class="titelGeelKlein">Contactgegevens:</span><span class=""> <%- info.features[i].properties.Contactgegevens %> <br/><br/> <span class="titelGeelKlein">Aantal plaatsen:</span><span class=""> <%- info.features[i].properties.Max_Fiets %></span> <br/><br/> <span class="linkInfo"> <a href="<%- info.features[i].properties.Link %>"> Link met informatie </a> over het betalen van de fietsenstallingen</span>');
+
+      <%
+    }
+  } %>
+
+  </script>
+
+<% include footer %>
